@@ -23,8 +23,16 @@ Download from the [Releases](https://github.com/DJR-FP/blinex-agent/releases) pa
 curl -fsSL https://raw.githubusercontent.com/DJR-FP/blinex-agent/main/install.sh | \
   BLINEX_SETUP_KEY=YOUR_KEY \
   BLINEX_MANAGEMENT_URL=your-server:50051 \
-  sudo bash
+  BLINEX_SIGNAL_URL=your-server:10000 \
+  sudo -E bash
 ```
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `BLINEX_SETUP_KEY` | _(required)_ | Enrollment key from the Setup Keys page |
+| `BLINEX_MANAGEMENT_URL` | `localhost:50051` | Management server gRPC address |
+| `BLINEX_SIGNAL_URL` | `localhost:10000` | Signal server address |
+| `BLINEX_VERSION` | `latest` | Pin a specific release version |
 
 This downloads the agent, writes a config file, and starts a systemd service (Linux) or launchd daemon (macOS).
 
