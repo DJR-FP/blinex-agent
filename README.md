@@ -24,6 +24,7 @@ curl -fsSL https://raw.githubusercontent.com/DJR-FP/blinex-agent/main/install.sh
   BLINEX_SETUP_KEY=YOUR_KEY \
   BLINEX_MANAGEMENT_URL=your-server:50051 \
   BLINEX_SIGNAL_URL=your-server:10000 \
+  BLINEX_TURN_PASS=your-relay-password \
   sudo -E bash
 ```
 
@@ -32,6 +33,9 @@ curl -fsSL https://raw.githubusercontent.com/DJR-FP/blinex-agent/main/install.sh
 | `BLINEX_SETUP_KEY` | _(required)_ | Enrollment key from the Setup Keys page |
 | `BLINEX_MANAGEMENT_URL` | `localhost:50051` | Management server gRPC address |
 | `BLINEX_SIGNAL_URL` | `localhost:10000` | Signal server address |
+| `BLINEX_TURN_PASS` | _(empty)_ | TURN relay password (must match `RELAY_AUTH_PASS` on server) |
+| `BLINEX_TURN_USER` | `blinex` | TURN relay username |
+| `BLINEX_RELAY_URL` | _(auto-detected)_ | TURN relay host:port (defaults to management host:3478) |
 | `BLINEX_VERSION` | `latest` | Pin a specific release version |
 
 This downloads the agent, writes a config file, and starts a systemd service (Linux) or launchd daemon (macOS).
