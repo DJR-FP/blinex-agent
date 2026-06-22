@@ -2,8 +2,9 @@
 set -euo pipefail
 
 # Bline-X Agent Installer
-# Usage: curl -fsSL https://raw.githubusercontent.com/DJR-FP/blinex-agent/main/install.sh | sudo BLINEX_SETUP_KEY=<key> bash
-# Or:    sudo BLINEX_SETUP_KEY=<key> BLINEX_MANAGEMENT_URL=<host:50051> ./install.sh
+# Usage:
+#   curl -fsSL https://raw.githubusercontent.com/DJR-FP/blinex-agent/main/install.sh | \
+#     BLINEX_SETUP_KEY=<key> BLINEX_MANAGEMENT_URL=<host:50051> BLINEX_SIGNAL_URL=<host:10000> sudo -E bash
 
 BLINEX_SETUP_KEY="${BLINEX_SETUP_KEY:-}"
 BLINEX_MANAGEMENT_URL="${BLINEX_MANAGEMENT_URL:-localhost:50051}"
@@ -138,3 +139,4 @@ else
 fi
 
 info "Done! Your device will appear in the dashboard once connected."
+info "To uninstall: curl -fsSL https://raw.githubusercontent.com/DJR-FP/blinex-agent/main/uninstall.sh | sudo bash"
