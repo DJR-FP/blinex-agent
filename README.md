@@ -68,6 +68,18 @@ sudo ./blinex-uninstall
 
 The device stays listed in the dashboard until you remove it there.
 
+## Running in an LXC container
+
+Unprivileged LXC containers have no `/dev/net/tun`, so the agent falls back to userspace netstack mode — inbound works, but the container's own apps can't reach the mesh transparently. Pass the TUN device through for full connectivity. On the Proxmox host:
+
+```bash
+echo "lxc.cgroup2.devices.allow: c 10:200 rwm" >> /etc/pve/lxc/<CTID>.conf
+echo "lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file" >> /etc/pve/lxc/<CTID>.conf
+pct restart <CTID>
+```
+
+Then reinstall the agent — it will detect the TUN device and use kernel mode.
+
 ## Documentation
 
 Full docs at the main repo: [DJR-FP/blinex](https://github.com/DJR-FP/blinex)
