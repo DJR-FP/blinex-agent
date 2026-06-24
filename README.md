@@ -40,6 +40,20 @@ curl -fsSL https://raw.githubusercontent.com/DJR-FP/blinex-agent/main/install.sh
 
 This downloads the agent, writes a config file, and starts a systemd service (Linux) or launchd daemon (macOS).
 
+## Status CLI
+
+Once the agent is running, query its live state (like `netbird status`):
+
+```bash
+blinex-agent status     # version, mesh IP, interface/mode, peer + route counts
+blinex-agent peers      # peers: hostname, mesh IP, DNS name, data path (direct | relay)
+blinex-agent routes     # advertised subnet / exit-node routes and their gateway
+blinex-agent version
+```
+
+`PATH` in `peers` shows whether traffic to that peer is a **direct** ICE
+peer-to-peer connection or **relayed** through the signal server.
+
 ## Uninstall
 
 **Linux / macOS:**
